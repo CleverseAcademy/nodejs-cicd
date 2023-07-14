@@ -10,6 +10,10 @@ dotenv.config();
 type HandlerFunc = (req: Request, res: Response) => Promise<Response>;
 
 async function main(): Promise<void> {
+  const version = process.env.APP_VERSION || "no-app-version-information";
+  const repo = process.env.FROM_REPO || "no-repo-information";
+  console.log({ status: "starting app", version, repo });
+
   const port = process.env.PORT || 8000;
 
   const mongoUser = process.env.MONGODB_USERNAME;
@@ -33,7 +37,9 @@ async function main(): Promise<void> {
   try {
     await mongo.connect();
   } catch (err) {
-    console.error(`error connecting to MongoDB at ${mongoUrl}: ${err}`);
+    console.error({
+      error: `error connecting to MongoDB at ${mongoUrl}: ${err}`,
+    });
     return;
   }
 
@@ -96,7 +102,7 @@ async function main(): Promise<void> {
   });
 
   app.listen(port, () => {
-    console.log(`server is listening on port ${port}`);
+    console.log({ status: `server is listening`, port });
   });
 }
 

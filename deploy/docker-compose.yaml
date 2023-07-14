@@ -8,7 +8,11 @@ services:
   app:
     # Build image nodeserver from Dockerfile in GitHub repo
     image: nodejs-cicd
-    build: https://github.com/CleverseAcademy/nodejs-cicd.git#develop
+    build:
+      context: https://github.com/CleverseAcademy/nodejs-cicd.git#develop
+      args:
+        FROM_REPO: https://github.com/CleverseAcademy/nodejs-cicd
+        APP_VERSION: compose-develop
     environment:
       MONGODB_USERNAME: gigi
       MONGODB_PASSWORD: taichi
