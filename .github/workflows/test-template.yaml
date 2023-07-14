@@ -1,5 +1,4 @@
 name: Test TypeScript code on Node.js >=18.x and latest
-run-name: "Triggering test by ${{ github.actor }}"
 
 on:
   # Allow this workflow to be reused/called

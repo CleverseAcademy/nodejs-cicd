@@ -1,5 +1,5 @@
-name: Test workflow
-run-name: "Triggering test by ${{ github.actor }}"
+name: Test code on all platforms
+run-name: Test code on all platforms for ${{ github.event_name }} on ${{ github.ref_name }} by ${{ github.actor }}
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: Test code on all platforms
+    name: Using test-template
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
