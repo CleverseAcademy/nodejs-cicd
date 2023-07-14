@@ -113,18 +113,13 @@ function newCalcHandler(
   return async (req: Request, res: Response): Promise<Response> => {
     const { numbers } = req.body;
     if (!numbers) {
-      return Promise.resolve(
-        res.status(400).json({ error: "missing `numbers` in body" }).end(),
-      );
+      return res.status(400).json({ error: "missing `numbers` in body" }).end();
     }
-
     try {
-      const m = calcFunc(numbers);
-      return Promise.resolve(
-        res.status(200).json({ numbers, ops: name, result: m }).end(),
-      );
+      const result = calcFunc(numbers);
+      return res.status(200).json({ numbers, ops: name, result }).end();
     } catch (err) {
-      return Promise.resolve(res.status(400).json({ error: err }).end());
+      return res.status(400).json({ error: err }).end();
     }
   };
 }

@@ -1,4 +1,3 @@
-import { describe } from "node:test";
 import { max, min, avg } from "../src/utils";
 
 describe("test max", () => {
