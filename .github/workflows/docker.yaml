@@ -31,4 +31,4 @@ jobs:
         with:
           push: true
           file: ./Dockerfile
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-cicd:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-cicd:${{ github.ref_name }}
