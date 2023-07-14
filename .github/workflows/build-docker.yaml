@@ -7,8 +7,10 @@ on:
 
 jobs:
   test:
-    name: Running test workflow
-    uses: ./.github/workflows/test.yaml
+    name: Running test workflow on ubuntu-latest
+    uses: ./.github/workflows/test-template.yaml
+    with:
+      runs-on: ubuntu-latest
 
   docker:
     # Only start this job after job `test` finished successfully
