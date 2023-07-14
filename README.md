@@ -38,4 +38,7 @@ docker compose -f ./deploy/docker-compose.yaml up;
 
 # Detached run
 docker compose -f ./deploy/docker-compose.yaml up -d;
+
+# Stop
+docker compose -f ./deploy/docker-compose.yaml down;
 ```
