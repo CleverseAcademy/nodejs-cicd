@@ -21,6 +21,6 @@ The goals are incremental:
 
 1. Build and test Node.js app code after pushes
 
-2. (TODO) Build Docker image and publish to DockerHub after new tag pushes
+2. Build Docker image and publish to DockerHub after new tag pushes
 
 3. (TODO) Deploy to servers or clusters
