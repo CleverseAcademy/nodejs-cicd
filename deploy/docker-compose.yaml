@@ -9,13 +9,24 @@ services:
     # Build image nodeserver from Dockerfile in GitHub repo
     image: nodejs-cicd
     build:
-      context: https://github.com/CleverseAcademy/nodejs-cicd.git#develop
-      args:
-        FROM_REPO: https://github.com/CleverseAcademy/nodejs-cicd
-        APP_VERSION: compose-develop
+      # context: https://github.com/CleverseAcademy/nodejs-cicd.git#develop
+      context: ..
     environment:
       MONGODB_USERNAME: gigi
       MONGODB_PASSWORD: taichi
       MONGODB_HOST: mongodb
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgresql://pguser:pgpassword@postgresql:5432
     ports:
       - "8000:8000"
+
+  redis:
+    image: redis:7.0
+
+  postgres:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpassword
